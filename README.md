@@ -93,7 +93,7 @@ Default root password: **`ncsender`**
 | OTA update never completes | Power-cycle once. The supervisor will recover. |
 | WiFi disconnects after a while | `Settings → Network → WiFi` and toggle "Power save" off. |
 
-For anything else, open an issue on the [main ncSenderProOs repo](https://github.com/siganberg/ncSenderProOs/issues) with the device model, image version, and a description of the symptom.
+For anything else, [open an issue](https://github.com/siganberg/ncSenderProOs.releases/issues) with the device model, image version, and a description of the symptom.
 
 ---
 
