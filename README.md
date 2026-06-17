@@ -1,6 +1,6 @@
 # ncSenderProOS — Releases
 
-Pre-built, ready-to-flash device images for [ncSender Pro](https://github.com/siganberg/ncSenderPro) — a complete kiosk OS that boots straight into the ncSender CNC controller UI.
+Pre-built, ready-to-flash device images for [ncSender Pro](https://github.com/siganberg/ncsenderpro.releases) — a complete kiosk OS that boots straight into the ncSender CNC controller UI.
 
 Pick the image that matches your hardware, flash it to a micro-SD card, plug it in, and you're done.
 
@@ -100,7 +100,7 @@ For anything else, open an issue on the [main ncSenderProOs repo](https://github
 ## License
 
 ncSenderProOS images bundle:
-- **ncSender Pro** — proprietary, see <https://github.com/siganberg/ncSenderPro> for license terms
+- **ncSender Pro** — proprietary. The source repo is private; for license terms, downloads, and issue reporting see the public counterpart at <https://github.com/siganberg/ncsenderpro.releases>.
 - **Raspberry Pi OS** base — Debian (various open-source licenses)
 - **pi-gen** build framework — Raspberry Pi Foundation
 
