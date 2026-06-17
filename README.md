@@ -60,7 +60,7 @@ The file is xz-compressed; balenaEtcher decompresses it on the fly when flashing
 
 ## After First Boot
 
-- **Connect to your controller**: ncSender auto-detects USB CNC controllers. If yours doesn't show up, check the bottom-status bar for "No controller detected".
+- **Connect to your controller**: ncSender auto-detects USB CNC controllers. If yours isn't connected yet, the header will show "Connecting…" until it finds one.
 - **WiFi setup**: tap **Settings → Network → WiFi** in the ncSender UI.
 - **Screen rotation**: **Settings → Display → Rotation** (Portrait modes supported; touch axes follow automatically).
 - **Updates**: ncSender checks for updates on launch. New versions install in-place from the UI — the device reboots once and comes back on the new version.
@@ -94,12 +94,6 @@ Default root password: **`ncsender`**
 | WiFi disconnects after a while | `Settings → Network → WiFi` and toggle "Power save" off. |
 
 For anything else, open an issue on the [main ncSenderProOs repo](https://github.com/siganberg/ncSenderProOs/issues) with the device model, image version, and a description of the symptom.
-
----
-
-## Building Your Own Image
-
-If you want to roll a custom image (different logo, extra packages, etc.) the build scripts and overlays live in the source repo: <https://github.com/siganberg/ncSenderProOs>.
 
 ---
 
