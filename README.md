@@ -12,8 +12,6 @@ Pick the image that matches your hardware, flash it to a micro-SD card, plug it 
 |--------|------------|-------|
 | **Raspberry Pi 5** | `ncSenderOS-pi5-v*.img.xz` | 4 GB or 8 GB |
 
-Looking for **Pi 4 / Dragon Q6A / other** support? It's on the roadmap — open an issue if you'd like it prioritized.
-
 ---
 
 ## What You'll Need
@@ -21,10 +19,7 @@ Looking for **Pi 4 / Dragon Q6A / other** support? It's on the roadmap — open 
 - A **micro-SD card** (16 GB or larger, Class 10 / U1 minimum, U3 / A2 recommended)
 - A **micro-SD card reader** for your computer
 - The **latest release image** from this repository
-- A flashing tool (any one of these):
-  - [Raspberry Pi Imager](https://www.raspberrypi.com/software/) — **recommended for beginners**, handles `.img.xz` automatically
-  - [balenaEtcher](https://etcher.balena.io/) — cross-platform GUI, handles `.img.xz` automatically
-  - Command-line `dd` / `xzcat` — for advanced users
+- [**balenaEtcher**](https://etcher.balena.io/) — free, cross-platform, handles `.img.xz` automatically
 
 ---
 
@@ -35,64 +30,18 @@ Looking for **Pi 4 / Dragon Q6A / other** support? It's on the roadmap — open 
 3. Download the `.img.xz` asset for your device, e.g.
    `ncSenderOS-pi5-v2.0.3.img.xz`.
 
-The file is xz-compressed; both Raspberry Pi Imager and balenaEtcher decompress it on the fly when flashing — no need to unpack it yourself.
+The file is xz-compressed; balenaEtcher decompresses it on the fly when flashing — no need to unpack it yourself.
 
 ---
 
-## Step 2 — Flash the Card
-
-### Option A — Raspberry Pi Imager (easiest)
-
-1. Open **Raspberry Pi Imager**.
-2. Click **CHOOSE DEVICE** → pick **Raspberry Pi 5**.
-3. Click **CHOOSE OS** → scroll to the bottom → **Use custom** → select the `.img.xz` file you downloaded.
-4. Click **CHOOSE STORAGE** → select your micro-SD card.
-   *(Triple-check this. The selected drive will be erased.)*
-5. Click **NEXT** → when asked about OS customization, click **NO, CLEAR SETTINGS**
-   *(ncSenderOS comes pre-configured; the Imager's WiFi/user prompts would be ignored.)*
-6. Click **YES** to write. Enter your password when prompted.
-7. Wait 5–10 minutes. Eject when finished.
-
-### Option B — balenaEtcher
+## Step 2 — Flash the Card with balenaEtcher
 
 1. Open **balenaEtcher**.
-2. **Flash from file** → pick the `.img.xz`.
-3. **Select target** → pick your micro-SD card.
-4. **Flash!** Enter your password when prompted.
-5. Wait for "Flash Complete". Eject when finished.
-
-### Option C — Command line (macOS / Linux)
-
-> Use this only if you're comfortable with `dd`. A wrong device path will destroy data.
-
-**macOS**:
-```bash
-# Find the SD card's BSD name (look for size match, often /dev/disk4)
-diskutil list external physical
-
-# Unmount the card (replace diskN with the right number)
-diskutil unmountDisk /dev/diskN
-
-# Decompress and write (use /dev/rdiskN — the "raw" device — for ~10× speed)
-xzcat ~/Downloads/ncSenderOS-pi5-v*.img.xz | sudo dd of=/dev/rdiskN bs=4m status=progress
-
-# Sync and eject
-sudo sync
-diskutil eject /dev/diskN
-```
-
-**Linux**:
-```bash
-# Find the card (e.g. /dev/sdX)
-lsblk
-
-# Unmount any auto-mounted partitions
-sudo umount /dev/sdX*
-
-# Write
-xzcat ~/Downloads/ncSenderOS-pi5-v*.img.xz | sudo dd of=/dev/sdX bs=4M status=progress conv=fsync
-sudo eject /dev/sdX
-```
+2. Click **Flash from file** and pick the `.img.xz` you just downloaded.
+3. Click **Select target** and pick your micro-SD card.
+   *(Triple-check this. The selected drive will be completely erased.)*
+4. Click **Flash!** and enter your password when prompted.
+5. Wait for "Flash Complete" (5–10 minutes). Eject when finished.
 
 ---
 
