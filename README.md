@@ -67,19 +67,56 @@ The file is xz-compressed; balenaEtcher decompresses it on the fly when flashing
 
 ---
 
-## SSH Access (optional, advanced)
+## Drop G-code Files from Your Computer (SMB)
 
-SSH is enabled by default on the released images. Connect with:
+The image exposes its G-code folder as a guest-accessible SMB share so you can save files to it from your CAM software without copying via USB.
+
+- **Share path:** `smb://ncsender/ncSender`
+  *(or `smb://<device-ip>/ncSender` if your network doesn't resolve the hostname)*
+- **Auth:** none — guest access, read/write
+- **On the Pi:** maps to `/root/.config/ncSender/` (G-code goes in the `gcode-files/` subfolder)
+
+**macOS:** Finder → ⌘K → paste the URL above.
+**Windows:** File Explorer → address bar → `\\ncsender\ncSender` (or `\\<device-ip>\ncSender`).
+
+---
+
+## Security & Hardening
+
+> **These images are designed to run on a trusted internal network** (your shop LAN, behind your router/firewall). The default credentials and open guest SMB are intentionally weak so the device works out of the box on day one. **Do not expose the Pi directly to the public internet.**
+
+Defaults:
+
+| Service | Default | Purpose |
+|---|---|---|
+| **SSH** | enabled, `root` / `ncsender`, root login allowed | troubleshooting + recovery |
+| **SMB (Samba)** | enabled, guest read/write on share `ncSender` | drop G-code from CAM software |
+
+### Change the root password
 ```
 ssh root@<device-ip>
+passwd
 ```
-Default root password: **`ncsender`**
+Recommended for any device that lives on a shared / untrusted LAN.
 
-> **Change this immediately** if your device is on a network you don't fully trust:
-> ```
-> ssh root@<device-ip>
-> passwd
-> ```
+### Disable SSH (lock down remote shell)
+```
+ssh root@<device-ip>
+systemctl disable --now ssh
+```
+You will lose remote access — only do this if you can reach the Pi physically (keyboard + monitor) or via the ncSender UI for everything you need.
+
+### Disable SMB (turn off the file share)
+```
+ssh root@<device-ip>
+systemctl disable --now smbd nmbd
+```
+You can still load G-code from a USB stick or from the ncSender UI's file picker.
+
+### Re-enable later
+```
+systemctl enable --now ssh         # or: smbd nmbd
+```
 
 ---
 
