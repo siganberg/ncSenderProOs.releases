@@ -134,6 +134,23 @@ For anything else, [open an issue](https://github.com/siganberg/ncSenderProOs.re
 
 ---
 
+## Disclaimer — No Warranty, Use at Your Own Risk
+
+These images are provided **as-is, without warranty of any kind**, express or implied — including but not limited to warranties of merchantability, fitness for a particular purpose, accuracy, or non-infringement.
+
+You alone are responsible for **how you use this software and what it controls**. The authors, contributors, and FrancisCreation accept **no liability** for any damage or loss — including but not limited to damage to your CNC machine, workpiece, tooling, computer, network, data, property, or for personal injury — arising from the installation, configuration, or operation of ncSenderProOS or any bundled component.
+
+CNC machinery can cause **serious injury and costly damage** when misused. Before running any job:
+
+- Verify your G-code, feed rates, spindle speed, and tool offsets
+- Keep your **e-stop within reach** at all times
+- Do an **air-cut / dry run** before cutting real material
+- **Never leave a running job unattended**
+
+By flashing and running this image you acknowledge that you accept these terms and that you are operating the device at your own risk.
+
+---
+
 ## License
 
 ncSenderProOS images bundle:
