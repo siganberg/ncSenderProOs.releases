@@ -2,7 +2,7 @@
 
 Pre-built, ready-to-flash device images for [ncSender Pro](https://github.com/siganberg/ncsenderpro.releases) — a complete kiosk OS that boots straight into the ncSender CNC controller UI.
 
-Pick the image that matches your hardware, flash it to a micro-SD card, plug it in, and you're done.
+Pick the image that matches your hardware, flash it, plug it in, and you're done.
 
 ---
 
@@ -10,7 +10,11 @@ Pick the image that matches your hardware, flash it to a micro-SD card, plug it 
 
 | Device | Image asset | Notes |
 |--------|------------|-------|
-| **Raspberry Pi 5** | `ncSenderOS-pi5-v*.img.xz` | 4 GB or 8 GB |
+| **Raspberry Pi 5** | `ncSenderOS-pi5-v*.img.xz` | 4 GB or 8 GB. Flash to micro-SD. |
+| **Radxa Dragon Q6A** | `ncSenderOS-q6a-v*.img.xz` | Flash to micro-SD. |
+| **x86_64 PC** (ncSenderOS.x86) | `ncSenderOS-x86-v*.iso` | Any 64-bit Intel/AMD PC with UEFI: Intel NUC, N100 mini PCs, gControl Panel, ... Write to a USB stick and install to the internal drive — see [ncSenderOS.x86](#ncsenderosx86-intel--amd-pcs) below. |
+
+The Pi 5 and Q6A steps below are the same; only the image differs. The x86 image is an installer, not a card image, and has its own section at the end.
 
 ---
 
@@ -159,3 +163,19 @@ ncSenderProOS images bundle:
 - **pi-gen** build framework — Raspberry Pi Foundation
 
 Each component retains its original license. The image bundle as a whole is distributed for use with licensed ncSender Pro installations.
+
+---
+
+## ncSenderOS.x86 (Intel / AMD PCs)
+
+One image covers every 64-bit x86 PC. It started life on the gControl Panel, but it is plain Debian with no vendor-specific pieces, and users run it on Intel NUCs and N100 mini PCs with the same results — touchscreens included.
+
+**Requirements:** 64-bit Intel or AMD CPU, UEFI firmware, 4 GB RAM or more, an internal drive that can be **completely erased**, a USB stick of 2 GB or more.
+
+1. Download `ncSenderOS-x86-v*.iso` from the latest release.
+2. Write it to the USB stick with balenaEtcher (Flash from file → Select target → Flash!).
+3. Plug the stick into the PC, power on, and pick the stick from the firmware boot menu (usually F7, F10, F12 or Esc during power-on). If the screen stays black, choose **Safe Mode** in the boot menu.
+4. The installer lists the disks it found. Pick the internal drive, confirm, and wait a few minutes while it installs.
+5. Remove the USB stick and press OK to reboot. ncSender starts in kiosk mode.
+
+Rotation, WiFi, SMB share and updates work the same as on the Pi (see above). A second HDMI or DisplayPort output is mirrored automatically.
